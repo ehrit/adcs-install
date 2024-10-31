@@ -1,4 +1,4 @@
-#Allowed EKUs
+#Validation script arrays
 [string[]]$AllowedEkuOids = '1.3.6.1.4.1.311.20.2.1','1.3.6.1.5.5.7.3.2','1.3.6.1.5.5.7.3.3','1.3.6.1.4.1.311.10.3.13','1.3.6.1.4.1.311.10.3.12','1.3.6.1.4.1.311.80.1','1.3.6.1.4.1.311.10.3.4','1.3.6.1.4.1.311.10.3.4.1','1.3.6.1.5.5.7.3.5','1.3.6.1.5.5.8.2.2','1.3.6.1.5.5.7.3.6','1.3.6.1.5.5.7.3.7','1.3.6.1.4.1.311.10.3.11','1.3.6.1.5.2.3.5','1.3.6.1.4.1.311.10.3.1','1.3.6.1.4.1.311.10.3.10','1.3.6.1.4.1.311.10.3.9','1.3.6.1.5.5.7.3.4','1.3.6.1.5.5.7.3.1','1.3.6.1.4.1.311.20.2.2','1.3.6.1.5.5.7.3.8','1.3.6.1.5.5.7.3.9','1.3.6.1.4.1.311.54.1.2','1.3.6.1.4.1.311.21.5','2.16.840.1.113741.1.2.3'
 [string[]]$NameConstraintsOptions = 'include','exclude'
 [string[]]$NameConstraintsDirectives = 'directoryName','dNSName','emailAddress','iPAddress','userPrincipalName'
@@ -195,5 +195,6 @@ function Export-CaPolicyFile {
     }
 
     #Export capolicy.inf
-    $policyContent | Out-File -FilePath $OutPath -Encoding ASCII -Force
+    $policyContent | Out-File -FilePath $OutPath -Encoding ASCII -Force -ErrorAction SilentlyContinue
+
 }
